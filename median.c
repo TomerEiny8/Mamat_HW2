@@ -5,7 +5,7 @@ int main(int argc, char *argv[]){
 	FILE *input;
 	
 	// checking which type of input we have: file or string
-	if(argv[1] == '-'){
+	if(argv[1][0] == '-'){
 		input = stdin;
 	} else {
 		input = fopen(argv[1], "r");
@@ -35,6 +35,8 @@ int main(int argc, char *argv[]){
 		num_of_numbers++;
 		numbers_histo[val]++;
 	}
+	if(input !- stdin)
+		fclose(input);
 	int result_index = 0;
 	for(int i=0; i<num_of_numbers/2;i++){
 		while(numbers_histo[result_index] == 0){
@@ -42,6 +44,6 @@ int main(int argc, char *argv[]){
 		}
 		numbers_histo[result_index]--;
 	}
-	fprintf("%d", result_index);
+	fprintf(stdout, "%d", result_index);
 	return 0;
 }
