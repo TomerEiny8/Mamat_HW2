@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 		src = fopen(argv[1] , "rb");
 		if(src == NULL)
 		{
-			fprintf(sterr, "Error occured\n");
+			fprintf(stderr, "Error occurred\n");
 			return 1;
 		}
 	}
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
                 dest = fopen(argv[2] , "wb");
                 if(dest == NULL)
                 {
-                        fprintf(sterr, "Error occured\n");
+                        fprintf(stderr, "Error occurred\n");
                         if(src != stdin)
 				fclose(src);
 			return 1;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 
 	while((bytes = fread(buffer, 1, BUFFER_SIZE, src)) > 0) {
 		if(fwrite(buffer, 1, bytes, dest) != bytes) {
-			fprintf(sterr, "Error occured\n");
+			fprintf(stderr, "Error occurred\n");
 			if(src != stdin) 
 				fclose(src);
 			if(dest != stdout)
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if(ferror(src)) {
-		fprintf(sterr, "Error occured\n");
+		fprintf(stderr, "Error occurred\n");
 		if(src != stdin)
 			fclose(src);
                 if(dest != stdout)
